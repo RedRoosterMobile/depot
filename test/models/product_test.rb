@@ -78,6 +78,15 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal [I18n.translate('errors.messages.taken')],
                  product.errors[:title]
   end
+
+  test "product has wrong fileending" do
+  	product = Product.new(title:       products(:two).title,
+                          description: "yyy", 
+                          price:       1, 
+                          image_url:   products(:two).image_url)
+  	assert product.invalid?
+  	assert_equal ['not a valid image type for web'], product.errors[:image_url]
+  end
   
 end
 
