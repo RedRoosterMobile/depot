@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyText
-  image_url: MyString
+  title: Some title
+  description: super boring description
+  image_url: http://ecx.images-amazon.com/images/I/41ktBg42ssL._SL75_SS50_.jpg
   price: 9.99
 
 two:
-  title: MyString
-  description: MyText
-  image_url: MyString
+  title: Some other title
+  description: zzzzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzzzz
+  image_url: http://i.computer-bild.de/imgs/7/5/5/6/9/0/Icon-FastStone-Image-Viewer-48x48-0b6f59ac231e5d56.jpeg
   price: 9.99
