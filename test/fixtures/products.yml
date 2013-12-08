@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: LoremIpsum
+  title: LoremIpsumTitle
   description: super boring description
   image_url: http://ecx.images-amazon.com/images/I/41ktBg42ssL._SL75_SS50_.jpg
   price: 9.99
