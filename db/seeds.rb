@@ -17,6 +17,8 @@ Product.create(
 Product.create(
 	title: 'Some Other Product',
 	description: 'even better that hip hopößé',
-	image_url: 'http://i.computer-bild.de/imgs/7/5/5/6/9/0/Icon-FastStone-Image-Viewer-48x48-0b6f59ac231e5d56.jpeg',
+	image_url: 'http://www.nasa.gov/sites/default/files/images/iBook_logo.png',
 	price: '49.95'
 )
+
+#http://www.nasa.gov/sites/default/files/images/iBook_logo.png
