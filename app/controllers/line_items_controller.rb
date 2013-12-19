@@ -71,6 +71,30 @@ class LineItemsController < ApplicationController
     end
   end
 
+  # PUT /line_items/1/decrement
+  # PUT /line_items/1.json/decrement
+  def decrement
+    @cart = current_cart
+
+    # 2nd way: decrement through method in @line_item
+    @line_item = @cart.line_items.find_by_id(params[:id])
+    @line_item = decrement_quantity(@line_item.id)
+
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to store_path, notice: 'Line item was successfully updated.' }
+        format.js {@current_item = @line_item}
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.js {@current_item = @line_item}
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_line_item
@@ -80,5 +104,17 @@ class LineItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
       params.require(:line_item).permit(:product_id, :cart_id)
+    end
+
+    def decrement_quantity(line_item_id)
+      current_item = LineItem.find_by_id(line_item_id)
+
+      if current_item.quantity > 1
+        current_item.quantity -= 1
+      else
+        current_item.destroy
+      end
+
+      current_item
     end
 end
