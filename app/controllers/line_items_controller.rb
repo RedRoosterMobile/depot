@@ -10,6 +10,7 @@ class LineItemsController < ApplicationController
   # GET /line_items/1
   # GET /line_items/1.json
   def show
+    @line_item = LineItem.find(params[:id])
   end
 
   # GET /line_items/new
@@ -19,6 +20,7 @@ class LineItemsController < ApplicationController
 
   # GET /line_items/1/edit
   def edit
+    @line_item = LineItem.find(params[:id])
   end
 
   # POST /line_items

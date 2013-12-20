@@ -61,6 +61,17 @@ class ProductsController < ApplicationController
     end
   end
 
+  # atom feed
+  def who_bought
+    @product = Product.find(params[:id])
+    respond_to do |format|
+      format.atom
+      format.json { render :json => @product.to_json(:include => :orders) }
+      format.html
+      format.xml { render :xml => @product.to_xml(:include => :orders) }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
