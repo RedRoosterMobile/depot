@@ -27,6 +27,12 @@
     <%= f.label :pay_type_id %><br />
     <%= collection_select(:order, :pay_type_id, PayType.all, :id, :name, prompt:'Select a payment method') %>  
   </div>
+  <% if request.path.split("/").last == "edit" %>
+    <div class="field">
+      <%= f.label :ship_date %><br>
+      <%= f.text_field :ship_date ,value: DateTime.now, size: 40 %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit 'Place Order' %>
   </div>

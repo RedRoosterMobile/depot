@@ -7,6 +7,16 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
   # cart, and check out, filling in their details on the checkout form. When
   # they submit, an order is created containing their information, along with a
   # single line item corresponding to the product they added to their cart.
+  test "should mail the admin when error occurs" do
+    get "/carts/wibble" 
+    assert_response :redirect  # should redirect to...
+    assert_template "/"        # ...store index
+
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal ["to@example.com"], mail.to  ## replace mail id
+    assert_equal "from@example.com", mail[:from].value  ## replace contact name/mail id
+    assert_equal "Depot App Error Incident", mail.subject
+  end
   
   test "buying a product" do
     LineItem.delete_all
