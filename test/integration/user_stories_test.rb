@@ -3,10 +3,6 @@ require 'test_helper'
 class UserStoriesTest < ActionDispatch::IntegrationTest
   fixtures :products
 
-  # A user goes to the index page. They select a product, adding it to their
-  # cart, and check out, filling in their details on the checkout form. When
-  # they submit, an order is created containing their information, along with a
-  # single line item corresponding to the product they added to their cart.
   test "should mail the admin when error occurs" do
     get "/carts/wibble" 
     assert_response :redirect  # should redirect to...
@@ -18,6 +14,10 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal "Depot App Error Incident", mail.subject
   end
   
+  # A user goes to the index page. They select a product, adding it to their
+  # cart, and check out, filling in their details on the checkout form. When
+  # they submit, an order is created containing their information, along with a
+  # single line item corresponding to the product they added to their cart.
   test "buying a product" do
     LineItem.delete_all
     Order.delete_all

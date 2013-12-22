@@ -47,3 +47,5 @@ end
 
 #tran stuff
 gem 'will_paginate','~> 3.0'
+
+gem 'bcrypt-ruby'
